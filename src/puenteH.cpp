@@ -1,12 +1,12 @@
  #include <Arduino.h>
  
- int enA=3;  //Pin para controlar la velocidad
- int in1=4;  //Terminal A del motor derecho
- int in2=2; //terminal в del motor derecho
+ int enA=32;  //Pin para controlar la velocidad
+ int in1=33;  //Terminal A del motor derecho
+ int in2=25; //terminal в del motor derecho
 
- int enB =6; //Pin para controlar la velocidad
- int in3=5;  //terminal A del motor izquierdo
- int in4=7; //terminal в del motor izquierdo
+ int enB =26; //Pin para controlar la velocidad
+ int in3=27;  //terminal A del motor izquierdo
+ int in4=14; //terminal в del motor izquierdo
   
  void adelante()
   {
