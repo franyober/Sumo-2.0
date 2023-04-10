@@ -1,14 +1,24 @@
- extern int enA;  //Pin para controlar la velocidad
- extern int in1;  //Terminal A del motor derecho
- extern int in2; //terminal в del motor derecho
+#ifndef puenteH_h
+#define puenteH_h
+#include <Arduino.h>
 
- extern int enB; //Pin para controlar la velocidad
- extern int in3;  //terminal A del motor izquierdo
- extern int in4; //terminal в del motor izquierdo
+class Motor
+{
+  private:
+    int _ENA; //Pin para controlar la velocidad
+    int _IN1; //Terminal A del motor derecho
+    int _IN2; //terminal в del motor derecho
+    int _ENB; //Pin para controlar la velocidad
+    int _IN3; //terminal A del motor izquierdo
+    int _IN4; //terminal в del motor izquierdo
+  public:
+    Motor(int ENA, int IN1, int IN2, int ENB, int IN3, int IN4); //Constructor
+    void adelante();
+    void atras();
+    void izquierda();
+    void derecha();
+    void freno();
+  
+};
 
-
-void adelante();
-void atras();
-void izquierda();
-void derecha();
-void freno();
+#endif // puenteH_h

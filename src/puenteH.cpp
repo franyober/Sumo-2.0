@@ -1,95 +1,94 @@
- #include <Arduino.h>
- 
- int enA=3;  //Pin para controlar la velocidad
- int in1=4;  //Terminal A del motor derecho
- int in2=2; //terminal в del motor derecho
+#include <Arduino.h>
 
- int enB =6; //Pin para controlar la velocidad
- int in3=5;  //terminal A del motor izquierdo
- int in4=7; //terminal в del motor izquierdo
+#define ENA 3  //Pin para controlar la velocidad
+#define IN1 4  //Terminal A del motor derecho
+#define IN2 2 //terminal в del motor derecho
+#define ENB 6 //Pin para controlar la velocidad
+#define IN3 5  //terminal A del motor izquierdo
+#define IN4 7 //terminal в del motor izquierdo
   
  void adelante()
   {
-    analogWrite(enA,255);
-    analogWrite(enB,255);
+    analogWrite(ENA,255);
+    analogWrite(ENB,255);
     //Control del motor Derecho
-    digitalWrite(in1,HIGH);
-    digitalWrite(in2,LOW);
+    digitalWrite(IN1,HIGH);
+    digitalWrite(IN2,LOW);
     //Control del motor Izquierdo
-    digitalWrite(in3,HIGH);
-    digitalWrite(in4,LOW);
+    digitalWrite(IN3,HIGH);
+    digitalWrite(IN4,LOW);
   }
   
   void atras()
   {
-    analogWrite(enA,200);
-    analogWrite(enB,255);
+    analogWrite(ENA,200);
+    analogWrite(ENB,255);
     //Control del motor Derecho
-    digitalWrite(in1,LOW);
-    digitalWrite(in2,HIGH);
+    digitalWrite(IN1,LOW);
+    digitalWrite(IN2,HIGH);
     //Control del motor Izquierdo
-    digitalWrite(in3,LOW);
-    digitalWrite(in4,HIGH);
+    digitalWrite(IN3,LOW);
+    digitalWrite(IN4,HIGH);
   }
 void izquierda()
 {
-  analogWrite(enA,110);
-  analogWrite(enB,110);
+  analogWrite(ENA,110);
+  analogWrite(ENB,110);
   //Control del motor Derecho
-  digitalWrite(in1,LOW);
-  digitalWrite(in2,HIGH);
+  digitalWrite(IN1,LOW);
+  digitalWrite(IN2,HIGH);
   //Control del motor Izquierdo
-  digitalWrite(in3,HIGH);
-  digitalWrite(in4,LOW);
+  digitalWrite(IN3,HIGH);
+  digitalWrite(IN4,LOW);
 }
 
 void derecha()
 {
-  analogWrite(enA,74);
-  analogWrite(enB,74);
+  analogWrite(ENA,74);
+  analogWrite(ENB,74);
   //Controla la velocidad de motor con valores de 0 a 255
   //Control del motor Derecho
-  digitalWrite(in1,HIGH);
-  digitalWrite(in2,LOW);
+  digitalWrite(IN1,HIGH);
+  digitalWrite(IN2,LOW);
   //Control del motor Izquierdo
-  digitalWrite(in3,LOW);
-  digitalWrite(in4,HIGH);
+  digitalWrite(IN3,LOW);
+  digitalWrite(IN4,HIGH);
 }
 void freno()
 {
-  analogWrite(enA,255);
-  analogWrite(enB,255);
+  analogWrite(ENA,255);
+  analogWrite(ENB,255);
   //Controla la velocidad de motor con valores de 0 a 255
   //Control del motor Derecho
-  digitalWrite(in1,HIGH);
-  digitalWrite(in2,HIGH);
+  digitalWrite(IN1,HIGH);
+  digitalWrite(IN2,HIGH);
   //Control del motor Izquierdo
-  digitalWrite(in3,HIGH);
-  digitalWrite(in4,HIGH);
+  digitalWrite(IN3,HIGH);
+  digitalWrite(IN4,HIGH);
 
 }
 void atrasDer()
 {
-  analogWrite(enA,150);
-  analogWrite(enB,255);
+  analogWrite(ENA,150);
+  analogWrite(ENB,255);
   //Controla la velocidad de motor con valores de 0 a 255
   //Control del motor Derecho
-  digitalWrite(in1,LOW);
-  digitalWrite(in2,HIGH);
+  digitalWrite(IN1,LOW);
+  digitalWrite(IN2,HIGH);
   //Control del motor Izquierdo
-  digitalWrite(in3,LOW);
-  digitalWrite(in4,HIGH);
+  digitalWrite(IN3,LOW);
+  digitalWrite(IN4,HIGH);
 }
 void OFF()
 {
-  analogWrite(enA,0);
-  analogWrite(enB,0);
+  analogWrite(ENA,0);
+  analogWrite(ENB,0);
   //Controla la velocidad de motor con valores de 0 a 255
   //Control del motor Derecho
-  digitalWrite(in1,LOW);
-  digitalWrite(in2,LOW);
+  digitalWrite(IN1,LOW);
+  digitalWrite(IN2,LOW);
   //Control del motor Izquierdo
-  digitalWrite(in3,LOW);
-  digitalWrite(in4,LOW);
+  digitalWrite(IN3,LOW);
+  digitalWrite(IN4,LOW);
 
 }
