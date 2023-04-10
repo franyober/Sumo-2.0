@@ -8,4 +8,7 @@ determine whether they are fit for use. Unit testing finds problems early
 in the development cycle.
 
 More information about PlatformIO Unit Testing:
+
+Codigo funcionamiento Mini/Sumo, basado en ESP32 con framework de arduino implementado mediante PlatFormIO y VisualStudioCode
+
 - https://docs.platformio.org/en/latest/advanced/unit-testing/index.html
