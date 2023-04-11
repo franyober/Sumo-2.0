@@ -9,7 +9,8 @@
 
 BluetoothSerial SerialBT;
 
-String opc="";
+char opc = 'z'; // Nos da la opcion de que hacer para el menú
+char selectedSensor = 'z';// Nos da la opcion de cual sensor se está presentando
 
 void bluetoothTask(void *parameter) {
 
@@ -18,21 +19,22 @@ void bluetoothTask(void *parameter) {
   Serial.println("The device started, now you can pair it with bluetooth!");
 
   while(1){
-  if (Serial.available()) {
-    SerialBT.write(Serial.read());
-  }
+  // if (Serial.available()) {
+  //   SerialBT.write(Serial.read()); //Usar en caso de que quisieramos escribir desde el monitor serial
+  // }
   if (SerialBT.available()) {
-    opc = SerialBT.readStringUntil('\n');
-    Serial.write("Cell: ");
-    Serial.println(opc);
+    opc = SerialBT.read();
     }
     vTaskDelay(20/portTICK_PERIOD_MS);
-    
-    if(opc=="adelante"){
-      Serial.println("se escribio adelante");
-    }
-
-  }  
+  }
 
 
+}
+
+void writeBluetooth(String msg){
+  SerialBT.println(msg);
+}
+
+int Getopc(){
+  return atoi(&opc);
 }
