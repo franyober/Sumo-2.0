@@ -1,3 +1,6 @@
+#include "puenteH.h"
+#include "ultraSonico.h"
+
 #include <BluetoothSerial.h>
 #if !defined(CONFIG_BT_ENABLED) || !defined(CONFIG_BLUEDROID_ENABLED)
 #error Bluetooth is not enabled! Please run `make menuconfig` to and enable it
@@ -5,6 +8,9 @@
 
 
 BluetoothSerial SerialBT;
+
+String opc="";
+
 void bluetoothTask(void *parameter) {
 
   Serial.begin(115200);
@@ -16,13 +22,17 @@ void bluetoothTask(void *parameter) {
     SerialBT.write(Serial.read());
   }
   if (SerialBT.available()) {
+    opc = SerialBT.readStringUntil('\n');
     Serial.write("Cell: ");
-    Serial.write(SerialBT.read());
-    Serial.write("\n");
+    Serial.println(opc);
     }
-    vTaskDelay(100/portTICK_PERIOD_MS);
-
+    vTaskDelay(20/portTICK_PERIOD_MS);
+    
+    if(opc=="adelante"){
+      Serial.println("se escribio adelante");
+    }
 
   }  
+
 
 }
