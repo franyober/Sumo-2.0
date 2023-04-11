@@ -1,4 +1,7 @@
-int const trig1=18;
-int const Echo1=19;
-
 int getDistance(int trig, int Echo);
+
+void Ultrasonico1(void *parameter);
+void Ultrasonico2(void *parameter);
+void Ultrasonico3(void *parameter);
+
+
