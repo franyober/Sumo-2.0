@@ -1,13 +1,13 @@
 #include <Arduino.h>
 #include "puenteH.h"
 
-// #define ENA 3  //Pin para controlar la velocidad
-// #define IN1 4  //Terminal A del motor derecho
-// #define IN2 2 //terminal в del motor derecho
-// #define ENB 6 //Pin para controlar la velocidad
-// #define IN3 5  //terminal A del motor izquierdo
-// #define IN4 7 //terminal в del motor izquierdo
-  
+// #define ENA 32  //Pin para controlar la velocidad
+// #define IN1 33  //Terminal A del motor derecho
+// #define IN2 25 //terminal в del motor derecho
+// #define ENB 26 //Pin para controlar la velocidad
+// #define IN3 27  //terminal A del motor izquierdo
+// #define IN4 14 //terminal в del motor izquierdo
+
 
 puenteH::puenteH(int ENA, int IN1, int IN2, int ENB, int IN3, int IN4)
 {
