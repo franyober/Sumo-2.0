@@ -104,18 +104,18 @@ void loop() {
     motor.OFF();
       break;
     case Ultra1:
-    writeBluetooth("Ultra1");
-
+    writeBluetooth("Ultra1 ");
+    writeBluetooth(obtainDistance(1));
 
       break;
     case Ultra2:
     writeBluetooth("Ultra2");
-
+    writeBluetooth(obtainDistance(2));
 
       break;
     case Ultra3:
     writeBluetooth("Ultra3");
-
+    writeBluetooth(obtainDistance(1));
 
       break;
     default:
