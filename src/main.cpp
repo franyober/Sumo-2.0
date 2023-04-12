@@ -40,32 +40,13 @@ void setup() {
     xCore0);     /* pin task to core 0 */
 
   xTaskCreatePinnedToCore(
-    Ultrasonico1,   /* Task function. */
+    Ultrasonicos,   /* Task function. */
     "Ultrasonico1",     /* name of task. */
     10000,       /* Stack size of task */
     NULL,        /* parameter of the task */
     1,           /* priority of the task */
     NULL,        /* Task handle to keep track of created task */
     xCore1);     /* pin task to core 1 */
-
-  xTaskCreatePinnedToCore(
-    Ultrasonico2,   /* Task function. */
-    "Ultrasonico2",     /* name of task. */
-    10000,       /* Stack size of task */
-    NULL,        /* parameter of the task */
-    1,           /* priority of the task */
-    NULL,        /* Task handle to keep track of created task */
-    xCore1);     /* pin task to core 1 */
-
-  xTaskCreatePinnedToCore(
-    Ultrasonico3,   /* Task function. */
-    "Ultrasonico3",     /* name of task. */
-    10000,       /* Stack size of task */
-    NULL,        /* parameter of the task */
-    1,           /* priority of the task */
-    NULL,        /* Task handle to keep track of created task */
-    xCore1);     /* pin task to core 1 */
-
 
 }
 
@@ -122,7 +103,7 @@ void loop() {
     writeBluetooth("Justo le pegaste al nueve");
       break;
   }
-  vTaskDelay(1000/portTICK_PERIOD_MS);
+  vTaskDelay(100/portTICK_PERIOD_MS);
 
 }
 
