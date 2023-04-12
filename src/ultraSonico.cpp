@@ -11,6 +11,22 @@ int const Echo3=4;
 
 int distancia1,distancia2,distancia3;
 
+
+String obtainDistance(int num)
+{
+  switch(num)
+  {
+    case 1:
+      return String(distancia1);
+    case 2:
+      return String(distancia2);
+    case 3:
+      return String(distancia3);
+    default :
+      return String(0);
+  }
+}
+
 int getDistance(int trig, int Echo)
 {
   long duracion;int distancia;
