@@ -10,7 +10,7 @@ static const BaseType_t xCore0 = 0;
 
 
 //Motor pines
-puenteH motor(32,33,25,26,27,14); // Usar pines compatibles con la esp32
+puenteH motor(14,12,13,15,2,0); // Usar pines compatibles con la esp32
 
 
 enum Opciones {

@@ -1,13 +1,13 @@
 #include <Arduino.h>
 
-int const trig1=18;
-int const Echo1=19;
+int const trig1=32;
+int const Echo1=35;
 
-int const trig2=5;
-int const Echo2=17;
+int const trig2=26;
+int const Echo2=25;
 
-int const trig3=16;
-int const Echo3=4;
+int const trig3=5;
+int const Echo3=17;
 
 int distancia1,distancia2,distancia3;
 
