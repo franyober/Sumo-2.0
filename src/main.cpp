@@ -62,7 +62,7 @@ void loop() {
     case Adelante:
     writeBluetooth("Adelante");
 
-    motor.adelante(110,110);
+    motor.adelante(110,110);//motor.adelante(a,b)
       break;
     case Atras:
     writeBluetooth("Atras");
