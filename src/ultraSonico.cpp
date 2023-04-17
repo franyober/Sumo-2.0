@@ -69,11 +69,6 @@ void Ultrasonicos(void *parameter)
     distancia2=getDistance(trig2,Echo2);
     distancia3=getDistance(trig3,Echo3);
 
-    Serial.print(distancia1);Serial.print(",");
-    Serial.print(distancia2);Serial.print(",");
-    Serial.print(distancia3);Serial.print(",");
-    Serial.println();
-
     vTaskDelay(1/portTICK_PERIOD_MS);
   }
 }

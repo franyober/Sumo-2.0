@@ -22,7 +22,10 @@ enum Opciones {
   Inicio,//5
   Ultra1,//6
   Ultra2,//7
-  Ultra3//8
+  Ultra3,//8
+  caso9,
+  caso10,
+  caso11
 };
 
 Opciones caso;
@@ -99,8 +102,17 @@ void loop() {
     writeBluetooth(obtainDistance(1));
 
       break;
+    case caso9:
+    writeBluetooth("nueve");
+      break;
+    case caso10:
+    writeBluetooth("diez");
+      break;
+    case caso11:
+    writeBluetooth("once");
+      break;
     default:
-    writeBluetooth("Justo le pegaste al nueve");
+    writeBluetooth("default");
       break;
   }
   vTaskDelay(100/portTICK_PERIOD_MS);
