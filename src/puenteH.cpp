@@ -124,7 +124,4 @@ puenteH::puenteH(int ENA, int IN1, int IN2, int ENB, int IN3, int IN4)
     digitalWrite(_IN4,LOW);
   }
 
-//Esta muy bonito el codigo 
-//pero no se como hacer para que el robot se mueva en linea recta
-//y no se desvíe a la derecha o izquierda
-//si me pudieran ayudar se los agradecería mucho
+puenteH motor(14,12,13,15,2,0); // Usar pines compatibles con la esp32
