@@ -1,4 +1,4 @@
-
+#include <Arduino.h>
 
 int getDistance(int trig, int Echo);
 
