@@ -2,6 +2,7 @@
 #include "puenteH.h"
 #include "ultraSonico.h"
 #include "Bluetooth.h"
+#include "HilosEstrategias.h"
 
 //Nucleos de la ESP32s
 
@@ -9,8 +10,17 @@ static const BaseType_t xCore1 = 1;
 static const BaseType_t xCore0 = 0; 
 
 
-//Motor pines
-puenteH motor(32,33,25,26,27,14); // Usar pines compatibles con la esp32
+//Motor
+extern puenteH motor;
+
+
+//Handles
+static TaskHandle_t Estrategia1_H= NULL;
+static TaskHandle_t Estrategia2_H= NULL;
+static TaskHandle_t Estrategia3_H= NULL;
+
+//vector de Handles
+TaskHandle_t Estrategias[3] = {Estrategia1_H,Estrategia2_H,Estrategia3_H};
 
 
 enum Opciones {
@@ -22,7 +32,10 @@ enum Opciones {
   Inicio,//5
   Ultra1,//6
   Ultra2,//7
-  Ultra3//8
+  Ultra3,//8
+  caso9,
+  caso10,
+  caso11
 };
 
 Opciones caso;
@@ -40,7 +53,7 @@ void setup() {
     xCore0);     /* pin task to core 0 */
 
   xTaskCreatePinnedToCore(
-    Ultrasonico1,   /* Task function. */
+    Ultrasonicos,   /* Task function. */
     "Ultrasonico1",     /* name of task. */
     10000,       /* Stack size of task */
     NULL,        /* parameter of the task */
@@ -49,23 +62,35 @@ void setup() {
     xCore1);     /* pin task to core 1 */
 
   xTaskCreatePinnedToCore(
-    Ultrasonico2,   /* Task function. */
-    "Ultrasonico2",     /* name of task. */
+    Estrategia1,   /* Task function. */
+    "Estrategia1",     /* name of task. */
     10000,       /* Stack size of task */
     NULL,        /* parameter of the task */
     1,           /* priority of the task */
-    NULL,        /* Task handle to keep track of created task */
+    &Estrategia1_H, /* Task handle to keep track of created task */
     xCore1);     /* pin task to core 1 */
 
   xTaskCreatePinnedToCore(
-    Ultrasonico3,   /* Task function. */
-    "Ultrasonico3",     /* name of task. */
+    Estrategia2,   /* Task function. */
+    "Estrategia2",     /* name of task. */
     10000,       /* Stack size of task */
     NULL,        /* parameter of the task */
     1,           /* priority of the task */
-    NULL,        /* Task handle to keep track of created task */
+    &Estrategia2_H,        /* Task handle to keep track of created task */
     xCore1);     /* pin task to core 1 */
 
+  xTaskCreatePinnedToCore(
+    Estrategia3,   /* Task function. */
+    "Estrategia3",     /* name of task. */
+    10000,       /* Stack size of task */
+    NULL,        /* parameter of the task */
+    1,           /* priority of the task */
+    &Estrategia3_H,        /* Task handle to keep track of created task */
+    xCore1);     /* pin task to core 1 */
+
+    vTaskSuspend(Estrategia1);
+    vTaskSuspend(Estrategia2);
+    vTaskSuspend(Estrategia3);
 
 }
 
@@ -76,12 +101,13 @@ void loop() {
   switch(caso) {
     case Inicio:
     writeBluetooth("Inicio");
+    vTaskResume(Estrategias[0]);
 
       break;
     case Adelante:
     writeBluetooth("Adelante");
 
-    motor.adelante(110,110);
+    motor.adelante(110,110);//motor.adelante(a,b)
       break;
     case Atras:
     writeBluetooth("Atras");
@@ -118,11 +144,20 @@ void loop() {
     writeBluetooth(obtainDistance(1));
 
       break;
+    case caso9:
+    writeBluetooth("nueve");
+      break;
+    case caso10:
+    writeBluetooth("diez");
+      break;
+    case caso11:
+    writeBluetooth("once");
+      break;
     default:
-    writeBluetooth("Justo le pegaste al nueve");
+    writeBluetooth("default");
       break;
   }
-  vTaskDelay(1000/portTICK_PERIOD_MS);
+  vTaskDelay(100/portTICK_PERIOD_MS);
 
 }
 
