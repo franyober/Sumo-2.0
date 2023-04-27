@@ -5,16 +5,21 @@
 // extern puenteH motor;
 
 // void Estrategia1(void * parameter) {
-//   while(1) {
 
-//     if(distancia1<40 && distancia1>3){
+//   pinMode(19,OUTPUT);
+//   while(1) {
+//     digitalWrite(19,LOW);
+//     if(distancia1<20 && distancia1>3){
 //         motor.adelante(100,100);
+//         digitalWrite(19,HIGH);
 //     }
-//     if(distancia2<40 && distancia2>3){
+//     if(distancia2<20 && distancia2>3){
 //         motor.derecha();
+//         digitalWrite(19,HIGH);
 //     }
-//     if(distancia3<40 && distancia3>3){
+//     if(distancia3<20 && distancia3>3){
 //         motor.izquierda();
+//         digitalWrite(19,HIGH);
 //     }
 
 //   }

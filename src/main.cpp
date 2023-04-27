@@ -10,6 +10,8 @@ static const BaseType_t xCore1 = 1;
 static const BaseType_t xCore0 = 0; 
 
 
+extern int distancia1,distancia2,distancia3;
+
 //Motor
 extern puenteH motor;
 
@@ -42,6 +44,7 @@ Opciones caso;
 
 
 void setup() {
+  pinMode(19,OUTPUT);
 
   xTaskCreatePinnedToCore(
     bluetoothTask,   /* Task function. */
@@ -97,15 +100,28 @@ void setup() {
 void loop() {
 
   caso = (Opciones)Getopc();
-
+  digitalWrite(19,LOW);
   switch(caso) {
     case Inicio:
+    digitalWrite(19,LOW);
+    if(distancia1<20 && distancia1>3){
+        motor.adelante(100,100);
+        digitalWrite(19,HIGH);
+    }
+    if(distancia2<20 && distancia2>3){
+        motor.derecha();
+        digitalWrite(19,HIGH);
+    }
+    if(distancia3<20 && distancia3>3){
+        motor.izquierda();
+        digitalWrite(19,HIGH);
+    }
 
       break;
     case Adelante:
     writeBluetooth("Adelante");
 
-    motor.adelante(110,110);//motor.adelante(a,b)
+    motor.adelante(255,255);//motor.adelante(a,b)
       break;
     case Atras:
     writeBluetooth("Atras");
